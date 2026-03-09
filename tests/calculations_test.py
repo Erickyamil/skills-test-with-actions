@@ -59,12 +59,32 @@ def test_get_nth_fibonacci_one():
 
 
 def test_get_nth_fibonacci_ten():
- """Test with n=10."""
- # Arrange
- n = 10
+   """Test with n=10."""
+   # Arrange
+   n = 10
 
- # Act
- result = get_nth_fibonacci(n)
+   # Act
+   result = get_nth_fibonacci(n)
 
- # Assert
- assert result == 89
+   # Assert
+   assert result == 55
+
+
+def test_area_of_circle_negative_radius():
+    """Passing a negative radius should raise a ValueError."""
+    with pytest.raises(ValueError) as excinfo:
+        area_of_circle(-5)
+    assert "negative" in str(excinfo.value)
+
+
+def test_get_nth_fibonacci_negative():
+    """Passing a negative n should raise a ValueError."""
+    with pytest.raises(ValueError) as excinfo:
+        get_nth_fibonacci(-1)
+    assert "negative" in str(excinfo.value)
+
+
+def test_get_nth_fibonacci_small_values():
+    """Verify a couple of small fibonacci values beyond the base cases."""
+    assert get_nth_fibonacci(2) == 1
+    assert get_nth_fibonacci(5) == 5
